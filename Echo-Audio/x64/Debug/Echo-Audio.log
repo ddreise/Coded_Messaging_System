@@ -1,0 +1,12 @@
+﻿  audio_handling.cpp
+c:\github\coded_messaging_system\echo-audio\audio_handling.cpp(89): warning C4244: 'argument': conversion from 'float' to 'size_t', possible loss of data
+c:\github\coded_messaging_system\echo-audio\audio_handling.cpp(97): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+c:\github\coded_messaging_system\echo-audio\audio_handling.cpp(111): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+  sound.cpp
+  source.cpp
+c:\github\coded_messaging_system\echo-audio\source.cpp(23): warning C4101: 'replay': unreferenced local variable
+c:\github\coded_messaging_system\echo-audio\source.cpp(22): warning C4101: 'save': unreferenced local variable
+c:\github\coded_messaging_system\echo-audio\source.cpp(25): warning C4101: 'f': unreferenced local variable
+c:\github\coded_messaging_system\echo-audio\source.cpp(24): warning C4101: 'c': unreferenced local variable
+  Generating Code...
+  Echo-Audio.vcxproj -> C:\GitHub\Coded_Messaging_System\x64\Debug\Echo-Audio.exe
