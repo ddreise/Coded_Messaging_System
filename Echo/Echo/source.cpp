@@ -9,15 +9,23 @@
 
 #define _CRT_SECURE_NO_WARNINGS
 
-#include "sound.h"
-#include "audio_handling.h"
-#include "RS232Comm.h"
+#include "Echo_Main.h"
 #include <stdio.h>
 #include <windows.h>
 
 int	main(int argc, char *argv[])
 {
-	commsTest();
+	//startup initialization
+	mainError(startInit);
+
+	//main menu -> handles the rest of Echo except for exit
+	mainError(mainMenu);
+
+	//exit Echo
+	mainError(exit);
+
+
+	//commsTest();
 
 	////ECHO-AUDIO-V01//
 
