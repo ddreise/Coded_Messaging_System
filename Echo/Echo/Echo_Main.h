@@ -15,18 +15,18 @@
 #define ECHO_MAIN_H
 
 //enum for menu choices
-typedef enum MENU_CHOICE
+typedef enum MAIN_MENU_CHOICE
 {
-	SEND_MESSAGE,
+	SEND_MESSAGE = 1,
 	RECEIVE_MESSAGE,
 	PHONE_BOOK,
 	FRAME,
-	HELP,
+	MAIN_MENU_HELP,
 	EXIT
 } MENU_CHOICE;
 
 //enum for error types
-enum ERROR_CODE
+enum ERROR_CODES		///PUT THIS INTO SEPARATE FILE, BIG ERROR FILE
 {
 	SUCCESS,
 	INIT_ERROR,

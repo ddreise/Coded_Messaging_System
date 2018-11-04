@@ -13,6 +13,7 @@
 
 //includes
 #include "Echo_Main.h"
+#include "Echo_Message.h"
 #include <Windows.h>
 #include <stdio.h>
 
@@ -31,23 +32,26 @@ int startInit(void)
 //handles main menu screen of Echo
 int mainMenu(void)
 {
-	MENU_CHOICE choice;	//holds the menu choice of user
+	MAIN_MENU_CHOICE choice;	//holds the menu choice of user
 
 	while (true)
 	{
+		printf("\nMain Menu\n");
+
 		printf("\nWhat would you like to do?\n"
-				"0 - Send Message (NOT IMPLEMENTED)\n"
-				"1 - Receive Message (NOT IMPLEMENTED)\n"
-				"2 - Phone Book (NOT IMPLEMENTED)\n"
-				"3 - Frame (NOT IMPLEMENTED)\n"
-				"4 - Help (NOT IMPLEMENTED)\n"
-				"5 - Exit\n");
-		scanf_s("%d", &choice);
+				"1 - Send Message (NOT IMPLEMENTED)\n"
+				"2 - Receive Message (NOT IMPLEMENTED)\n"
+				"3 - Phone Book (NOT IMPLEMENTED)\n"
+				"4 - Frame (NOT IMPLEMENTED)\n"
+				"5 - Help (NOT IMPLEMENTED)\n"
+				"6 - Exit\n");
+		scanf_s("%d", &choice);	///need error checking if the input is a letter
 		system("CLS");
 
 		switch (choice)
 		{
 		case SEND_MESSAGE:
+			sendError(sendMenu);
 			break;
 
 		case RECEIVE_MESSAGE:
@@ -59,7 +63,7 @@ int mainMenu(void)
 		case FRAME:
 			break;
 
-		case HELP:
+		case MAIN_MENU_HELP:
 			break;
 
 		case EXIT:
