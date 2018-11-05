@@ -25,20 +25,10 @@ typedef enum MAIN_MENU_CHOICE
 	EXIT
 } MENU_CHOICE;
 
-//enum for error types
-enum ERROR_CODES		///PUT THIS INTO SEPARATE FILE, BIG ERROR FILE
-{
-	SUCCESS,
-	INIT_ERROR,
-	MENU_ERROR,
-	EXIT_ERROR
-};
-
 //prototypes
 int startInit(void);				//handles initial communication requirements (COM, sender id, etc)
 int mainMenu(void);					//handles main menu screen of Echo
 int exit(void);						//exits Echo (releases necessary info, end of program management)
-void mainError(int(*func)(void));	//will handle any errors passed from other functions
 
 #endif
 

@@ -24,6 +24,5 @@ typedef enum SEND_MENU_CHOICE
 
 //prototypes
 int sendMenu(void);					//sending menu
-void sendError(int(*func)(void));	//handles errors from send message menu
 
 #endif

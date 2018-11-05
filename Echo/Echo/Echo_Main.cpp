@@ -13,6 +13,7 @@
 
 //includes
 #include "Echo_Main.h"
+#include "Echo_Error.h"
 #include "Echo_Message.h"
 #include <Windows.h>
 #include <stdio.h>
@@ -39,7 +40,7 @@ int mainMenu(void)
 		printf("\nMain Menu\n");
 
 		printf("\nWhat would you like to do?\n"
-				"1 - Send Message (NOT IMPLEMENTED)\n"
+				"1 - Send Message\n"
 				"2 - Receive Message (NOT IMPLEMENTED)\n"
 				"3 - Phone Book (NOT IMPLEMENTED)\n"
 				"4 - Frame (NOT IMPLEMENTED)\n"
@@ -51,7 +52,7 @@ int mainMenu(void)
 		switch (choice)
 		{
 		case SEND_MESSAGE:
-			sendError(sendMenu);
+			error(sendMenu);
 			break;
 
 		case RECEIVE_MESSAGE:
@@ -83,12 +84,4 @@ int exit(void)
 {
 
 	return SUCCESS;
-}
-
-//will handle any errors passed from other functions
-void mainError(int(*func)(void))
-{
-	func();	//runs necessary function then it can use return to handle errors
-
-	return;
 }

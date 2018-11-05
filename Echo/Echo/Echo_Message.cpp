@@ -12,6 +12,7 @@
  */
 
 #include "Echo_Message.h"
+#include "Echo_Error.h"
 #include <stdio.h>
 #include <Windows.h>
 
@@ -46,7 +47,7 @@ int sendMenu(void)
 			break;
 
 		case MAIN_MENU:
-			return 0;		///find way to return SUCCESS
+			return SUCCESS;
 			break;
 
 		default:
@@ -54,10 +55,4 @@ int sendMenu(void)
 			break;
 		}
 	}
-}
-
-//handles errors from send message menu
-void sendError(int(*func)(void))
-{
-	func();
 }

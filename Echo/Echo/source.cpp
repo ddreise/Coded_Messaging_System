@@ -7,22 +7,20 @@
  *  Thursday, October 18, 2018
  */
 
-#define _CRT_SECURE_NO_WARNINGS
-
-#include "Echo_Main.h"
 #include <stdio.h>
 #include <windows.h>
-
+#include "Echo_Main.h"
+#include "Echo_Error.h"
 int	main(int argc, char *argv[])
 {
 	//startup initialization
-	mainError(startInit);
+	error(startInit);
 
 	//main menu -> handles the rest of Echo except for exit
-	mainError(mainMenu);
+	error(mainMenu);
 
 	//exit Echo
-	mainError(exit);
+	error(exit);
 
 
 	//commsTest();

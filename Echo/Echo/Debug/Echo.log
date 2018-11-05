@@ -1,2 +1,6 @@
-﻿  Echo_Message.cpp
+﻿  Echo_Error.cpp
+  Echo_Main.cpp
+  Echo_Message.cpp
+  source.cpp
+  Generating Code...
   Echo.vcxproj -> C:\GitHub\Coded_Messaging_System\Echo\Debug\Echo.exe
