@@ -15,7 +15,7 @@
 #include "Echo_Main.h"
 #include "Echo_Error.h"
 #include "Echo_Input.h"
-#include "Echo_Message.h"
+#include "Echo_Send_Message.h"
 #include <Windows.h>
 #include <stdio.h>
 #include <string.h>
@@ -58,7 +58,7 @@ int mainMenu(void)
 			break;
 
 		case MAIN_RECEIVE_MESSAGE:
-			//error(receiveMessage);
+			//error(receiveMenu);
 			break;
 
 		case MAIN_PHONE_BOOK:
@@ -70,7 +70,7 @@ int mainMenu(void)
 			break;
 
 		case MAIN_MENU_HELP:
-			//error(help);
+			//error(mainHelp);
 			break;
 
 		case EXIT:

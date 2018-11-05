@@ -11,8 +11,6 @@
  *  Thursday, November 05, 2018
  */
 
-#define _CRT_SECURE_NO_WARNINGS
-
 #include "Echo_Input.h"
 #include "Echo_Error.h"
 #include <stdio.h>
