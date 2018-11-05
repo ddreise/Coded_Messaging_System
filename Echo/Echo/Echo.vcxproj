@@ -117,6 +117,7 @@
   <ItemGroup>
     <ClCompile Include="audio_handling.cpp" />
     <ClCompile Include="Echo_Error.cpp" />
+    <ClCompile Include="Echo_Input.cpp" />
     <ClCompile Include="Echo_Main.cpp" />
     <ClCompile Include="Echo_Message.cpp" />
     <ClCompile Include="RS232Comm.cpp" />
@@ -126,6 +127,7 @@
   <ItemGroup>
     <ClInclude Include="audio_handling.h" />
     <ClInclude Include="Echo_Error.h" />
+    <ClInclude Include="Echo_Input.h" />
     <ClInclude Include="Echo_Main.h" />
     <ClInclude Include="Echo_Message.h" />
     <ClInclude Include="RS232Comm.h" />

@@ -16,7 +16,8 @@
 
 typedef enum SEND_MENU_CHOICE
 {
-	SEND_AUDIO = 1,
+	SEND_FAIL,
+	SEND_AUDIO,
 	SEND_TEXT,
 	SEND_MENU_HELP,
 	MAIN_MENU
@@ -24,5 +25,6 @@ typedef enum SEND_MENU_CHOICE
 
 //prototypes
 int sendMenu(void);					//sending menu
+int receiveMenu(void);				//receiving menu
 
 #endif

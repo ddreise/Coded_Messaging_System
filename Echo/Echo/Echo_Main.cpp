@@ -14,9 +14,11 @@
 //includes
 #include "Echo_Main.h"
 #include "Echo_Error.h"
+#include "Echo_Input.h"
 #include "Echo_Message.h"
 #include <Windows.h>
 #include <stdio.h>
+#include <string.h>
 
 //functions
 
@@ -46,34 +48,39 @@ int mainMenu(void)
 				"4 - Frame (NOT IMPLEMENTED)\n"
 				"5 - Help (NOT IMPLEMENTED)\n"
 				"6 - Exit\n");
-		scanf_s("%d", &choice);	///need error checking if the input is a letter
+		choice = (MAIN_MENU_CHOICE)getMenuChoice();
 		system("CLS");
 
 		switch (choice)
 		{
-		case SEND_MESSAGE:
+		case MAIN_SEND_MESSAGE:
 			error(sendMenu);
 			break;
 
-		case RECEIVE_MESSAGE:
+		case MAIN_RECEIVE_MESSAGE:
+			//error(receiveMessage);
 			break;
 
-		case PHONE_BOOK:
+		case MAIN_PHONE_BOOK:
+			//error(phoneBook);
 			break;
 
-		case FRAME:
+		case MAIN_FRAME:
+			//error(frame);
 			break;
 
 		case MAIN_MENU_HELP:
+			//error(help);
 			break;
 
 		case EXIT:
 			printf("\nExitting now...\n");
 			return SUCCESS;	//exits the program with no error
 			break;
-
+		
+		case MAIN_FAIL:
 		default:
-			printf("\nThat is an incorrect option. Try again :)\n");
+			printf("\nThat is an incorrect option. You're a loser. Try again :)\n");
 			break;
 		}
 	}

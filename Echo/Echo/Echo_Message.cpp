@@ -13,6 +13,7 @@
 
 #include "Echo_Message.h"
 #include "Echo_Error.h"
+#include "Echo_Input.h"
 #include <stdio.h>
 #include <Windows.h>
 
@@ -32,7 +33,7 @@ int sendMenu(void)
 			"2 - Send Text (NOT IMPLEMENTED)\n"
 			"3 - Help (NOT IMPLEMENTED)\n"
 			"4 - Main Menu\n");
-		scanf_s("%d", &choice);
+		choice = (SEND_MENU_CHOICE)getMenuChoice();
 		system("CLS");
 
 		switch (choice)
@@ -50,6 +51,7 @@ int sendMenu(void)
 			return SUCCESS;
 			break;
 
+		case SEND_FAIL:
 		default:
 			printf("\nThat is an incorrect option. Try again :)\n");
 			break;

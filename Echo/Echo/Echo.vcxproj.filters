@@ -36,6 +36,9 @@
     <ClCompile Include="Echo_Error.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Echo_Input.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="audio_handling.h">
@@ -54,6 +57,9 @@
       <Filter>Source Files</Filter>
     </ClInclude>
     <ClInclude Include="Echo_Error.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Echo_Input.h">
       <Filter>Source Files</Filter>
     </ClInclude>
   </ItemGroup>
