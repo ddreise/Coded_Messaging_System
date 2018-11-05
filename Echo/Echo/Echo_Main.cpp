@@ -16,6 +16,10 @@
 #include "Echo_Error.h"
 #include "Echo_Input.h"
 #include "Echo_Send_Message.h"
+#include "Echo_Receive_Message.h"
+#include "Echo_Phone_Book.h"
+#include "Echo_Frame.h"
+
 #include <Windows.h>
 #include <stdio.h>
 #include <string.h>
@@ -43,9 +47,9 @@ int mainMenu(void)
 
 		printf("\nWhat would you like to do?\n"
 				"1 - Send Message\n"
-				"2 - Receive Message (NOT IMPLEMENTED)\n"
-				"3 - Phone Book (NOT IMPLEMENTED)\n"
-				"4 - Frame (NOT IMPLEMENTED)\n"
+				"2 - Receive Message\n"
+				"3 - Phone Book\n"
+				"4 - Frame\n"
 				"5 - Help (NOT IMPLEMENTED)\n"
 				"6 - Exit\n");
 		choice = (MAIN_MENU_CHOICE)getMenuChoice();
@@ -58,15 +62,15 @@ int mainMenu(void)
 			break;
 
 		case MAIN_RECEIVE_MESSAGE:
-			//error(receiveMenu);
+			error(receiveMenu);
 			break;
 
 		case MAIN_PHONE_BOOK:
-			//error(phoneBook);
+			error(phoneBookMenu);
 			break;
 
 		case MAIN_FRAME:
-			//error(frame);
+			error(frameMenu);
 			break;
 
 		case MAIN_MENU_HELP:

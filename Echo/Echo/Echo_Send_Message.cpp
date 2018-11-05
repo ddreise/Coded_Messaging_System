@@ -47,13 +47,13 @@ int sendMenu(void)
 		case SEND_MENU_HELP:
 			break;
 
-		case MAIN_MENU:
+		case SEND_MAIN_MENU:
 			return SUCCESS;
 			break;
 
 		case SEND_FAIL:
 		default:
-			printf("\nThat is an incorrect option. Try again :)\n");
+			printf("\nThat is an incorrect option. You're a loser. Try again :)\n");
 			break;
 		}
 	}
