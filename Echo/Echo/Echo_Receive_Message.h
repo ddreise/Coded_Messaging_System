@@ -26,5 +26,6 @@ typedef enum RECEIVE_MENU_CHOICE
 
 //prototypes
 int receiveMenu(void);	//displays receive menu
+int receiveText(void);	//wrapper to receive text
 
 #endif

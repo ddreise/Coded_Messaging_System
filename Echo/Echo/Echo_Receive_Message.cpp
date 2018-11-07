@@ -14,8 +14,13 @@
 #include "Echo_Receive_Message.h"
 #include "Echo_Error.h"
 #include "Echo_Input.h"
+#include "Echo_Send_Message.h"
+#include "RS232Comm.h"
 #include <stdio.h>
 #include <Windows.h>
+
+//important variables
+char inBuff[MAX_BUFFER_SIZE];
 
 //functions
 
@@ -30,7 +35,7 @@ int receiveMenu(void)
 
 		printf("\nWhat would you like to do?\n"
 			"1 - Receive Audio (NOT IMPLEMENTED)\n"
-			"2 - Receive Text (NOT IMPLEMENTED)\n"
+			"2 - Receive Text\n"
 			"3 - Help (NOT IMPLEMENTED)\n"
 			"4 - Main Menu\n");
 		choice = (RECEIVE_MENU_CHOICE)getMenuChoice();
@@ -39,11 +44,11 @@ int receiveMenu(void)
 		switch (choice)
 		{
 		case RECEIVE_AUDIO:
-			//error(receiveAudio());
+			//error(receiveAudio);
 			break;
 
 		case RECEIVE_TEXT:
-			//error(receiveText());
+			error(receiveText);
 			break;
 
 		case RECEIVE_MENU_HELP:
@@ -60,4 +65,33 @@ int receiveMenu(void)
 			break;
 		}
 	}
+}
+
+//wrapper to receive text
+int receiveText(void)
+{
+	//MUSTS:
+	//	- receive text on comport
+	//	- get receiveId of message sent
+	//COULDS:
+	//	- log messages in a .txt
+
+	int i;	//disposable
+
+	//receive the message
+	inputFromPort(inBuff, MAX_BUFFER_SIZE);
+
+	printf("\nMessage Received:\n");
+	printf("%s\n", inBuff);
+
+	system("PAUSE");
+
+	//clear the inBuff
+	for (i = 0; i < strlen(inBuff); i++)
+	{
+		inBuff[i] = 0;
+	}
+
+	system("CLS");
+	return SUCCESS;
 }

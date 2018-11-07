@@ -14,6 +14,10 @@
 #ifndef ECHO_SEND_MESSAGE_H
 #define ECHO_SEND_MESSAGE_H
 
+//constants
+#define COM_LENGTH 5
+#define MAX_ID_LENGTH 11
+
 typedef enum SEND_MENU_CHOICE
 {
 	SEND_FAIL,
@@ -24,6 +28,14 @@ typedef enum SEND_MENU_CHOICE
 } SEND_MENU_CHOICE;
 
 //prototypes
+
+//functions to access static variables
+void setComPort(char* _comPort);
+char* getComPort(void);
+void setSenderId(char* _senderId);
+char* getSenderId(void);
+
 int sendMenu(void);					//sending menu
+int sendText(void);					//wrapper to begin sending text
 
 #endif

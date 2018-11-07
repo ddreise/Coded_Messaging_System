@@ -1,2 +1,3 @@
-﻿  Echo_Main.cpp
+﻿  Echo_Receive_Message.cpp
+c:\github\coded_messaging_system\echo\echo\echo_receive_message.cpp(90): warning C4018: '<': signed/unsigned mismatch
   Echo.vcxproj -> C:\GitHub\Coded_Messaging_System\Echo\Debug\Echo.exe

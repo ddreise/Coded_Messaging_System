@@ -19,6 +19,7 @@
 #include "Echo_Receive_Message.h"
 #include "Echo_Phone_Book.h"
 #include "Echo_Frame.h"
+#include "RS232Comm.h"
 
 #include <Windows.h>
 #include <stdio.h>
@@ -29,10 +30,33 @@
 //handles initial communication requirements (COM, sender id, etc)
 int startInit(void)
 {
+	//MUSTS:
+	//	- get user id
+	//	- get com port
+	//COULDS:
+	//	- save user input for next time and check for previous input when program starts
+
+	char senderId[MAX_ID_LENGTH];
+	char comPort[COM_LENGTH];
+
 	//get user (sender) id
+	printf("\nPlease enter a user id (this will be used as the sender id). Max of %d characters.\n", MAX_ID_LENGTH-1);
+	fgets(senderId, MAX_ID_LENGTH, stdin);
 
 	//get communication port
+	printf("\nPlease enter the com port to be used for communications (INPUT AS SHOWN: \"COM#\").\n");
+	fgets(comPort, COM_LENGTH, stdin);
 
+	//save senderId and comport to static variables in Echo_Send_Message.h
+	setComPort(comPort);
+	setSenderId(senderId);
+
+	//initialize (open) the port
+	initPort(comPort);
+
+	system("PAUSE");
+
+	system("CLS");
 	return SUCCESS;
 }
 
