@@ -15,6 +15,7 @@
 #include "Echo_Error.h"
 #include "Echo_Input.h"
 #include "Echo_Send_Message.h"
+#include "audio_handling.h"
 #include "RS232Comm.h"
 #include <stdio.h>
 #include <Windows.h>
@@ -44,7 +45,7 @@ int receiveMenu(void)
 		switch (choice)
 		{
 		case RECEIVE_AUDIO:
-			//error(receiveAudio);
+			error(receiveAudio);
 			break;
 
 		case RECEIVE_TEXT:
@@ -93,5 +94,53 @@ int receiveText(void)
 	}
 
 	system("CLS");
+	return SUCCESS;
+}
+
+//wrapper to receive audio
+int receiveAudio(void)
+{
+	//MUSTS:
+	//	- receive audio and audio size
+	//	- play audio to user
+	//COULD:
+	//	- store audio for later
+
+	long audioSize;		//size of audio
+	short* audio;		//audio data
+	int status = 0;		//status for receiving audio, 0 is no issue, 1 is issue
+
+	audioSetup();	//temp
+
+	//receive size of audio
+	inputFromPort(&audioSize, sizeof(audioSize));
+	printf("\nAudio size recieved! Size = %d\n", audioSize);
+
+	//send 'ok' if space is allocated for audio
+	audio = (short*)malloc(audioSize);
+	if (audio == NULL)
+	{
+		printf("\nERROR: Unable to allocate space required for audio buffer!\n");
+		status = 1;	//update status and send error
+		outputToPort(&status, sizeof(status));
+		return -1;	//temp
+	}
+
+	//save audio to buffer
+	setAudio(audio);
+	setAudioSize(audioSize);
+
+	//output 'ok' for receiving
+	outputToPort(&status, sizeof(status));
+	
+	//receive audio
+	printf("\nReady to receive audio?\n");
+	system("PAUSE");
+	inputFromPort(audio, audioSize);
+
+	//play audio
+	audioPlayback();
+
+	system("PAUSE");
 	return SUCCESS;
 }

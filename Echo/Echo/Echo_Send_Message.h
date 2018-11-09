@@ -37,5 +37,6 @@ char* getSenderId(void);
 
 int sendMenu(void);					//sending menu
 int sendText(void);					//wrapper to begin sending text
+int sendAudio(void);				//wrapper to send audio
 
 #endif

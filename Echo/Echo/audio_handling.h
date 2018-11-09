@@ -18,5 +18,12 @@
  //		have adjustable bits per sample and sample rate
 
 //PROTOTYPES//
-int echoRecord(void); //wrapper to handle audio recording
-int echoPlayback(void); //wrapper to handle audio playback
+long getAudioSize(void);		//get the size of the audio
+void setAudioSize(long audioSize);		//set the size of audio externally
+
+short* getAudio(void);			//get the audio data
+void setAudio(short* audio);	//set the audio data externally
+
+int audioSetup(void);	//wrapper to handle audio settings
+int audioRecord(void);	//wrapper to handle audio recording
+int audioPlayback(void); //wrapper to handle audio playback

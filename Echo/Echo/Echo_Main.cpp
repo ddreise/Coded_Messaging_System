@@ -54,7 +54,7 @@ int startInit(void)
 	//initialize (open) the port
 	initPort(comPort);
 
-	system("PAUSE");
+	getchar();
 
 	system("CLS");
 	return SUCCESS;

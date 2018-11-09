@@ -34,8 +34,31 @@ int iIn;						//used for user decisions
 
 //FUNCTION DEFINITIONS//
 
-//wrapper that interfaces with audio recording software
-int echoRecord(void)
+//get size of audio
+long getAudioSize(void)
+{
+	return lBigBufSize;
+}
+
+//set size of audio
+void setAudioSize(long audioSize)
+{
+	lBigBufSize = audioSize;
+}
+
+//get the audio data
+short* getAudio(void)
+{
+	return iBigBuf;
+}
+
+void setAudio(short* audio)
+{
+	iBigBuf = audio;
+}
+
+//wrapper that handles setting up settings for the audio
+int audioSetup(void)
 {
 	//obtain desired recording values
 	iRecSec = 0;
@@ -44,7 +67,7 @@ int echoRecord(void)
 		printf("Welcome to recording!\n"
 			"Please enter how many seconds you would like to record for (ex: 10): ");
 		scanf("%d", &iRecSec);				//take how many seconds to record for from user
-		
+
 		//error check
 		if (iRecSec < 1) printf("\nERROR: Please enter a valid amount of time to record for (POSITVIE INTEGER NUMBER > 0)!\n");
 	}
@@ -86,7 +109,7 @@ int echoRecord(void)
 	if (bitsPerSample == 16) iRecSec *= 2;
 
 	lBigBufSize = iRecSec * (long)sampleRate;
-	iBigBuf = (short*)malloc(iRecSec * sampleRate);
+	iBigBuf = (short*)malloc(lBigBufSize);
 	if (iBigBuf == NULL)
 	{
 		printf("\nERROR: Unable to allocate space required for audio buffer!\n");
@@ -95,6 +118,13 @@ int echoRecord(void)
 
 	//execute recording!
 	InitializeRecording(iBigBuf, lBigBufSize, sampleRate, bitsPerSample);		//prepare for recording
+
+	return 0;	//temp
+}
+
+//wrapper that interfaces with audio recording software
+int audioRecord(void)
+{
 	RecordBuffer(iBigBuf, lBigBufSize);											//record!
 	CloseRecording();															//close recording
 
@@ -102,9 +132,9 @@ int echoRecord(void)
 }
 
 //wrapper that interfaces with audio playback software
-int echoPlayback(void)
+int audioPlayback(void)
 {
-	printf("Welcome to playback!\n"
+	printf("\nWelcome to playback!\n"
 		"Audio will be played back with the settings entered during recording:\n");
 
 	//execute playback!

@@ -15,6 +15,7 @@
 #include "Echo_Error.h"
 #include "Echo_Input.h"
 #include "RS232Comm.h"
+#include "audio_handling.h"
 #include <stdio.h>
 #include <Windows.h>
 
@@ -66,7 +67,7 @@ int sendMenu(void)
 		switch (choice)
 		{
 		case SEND_AUDIO:
-			//error(sendAudio);
+			error(sendAudio);
 			break;
 
 		case SEND_TEXT:
@@ -108,5 +109,50 @@ int sendText(void)
 	system("PAUSE");
 
 	system("CLS");
+	return SUCCESS;
+}
+
+//wrapper to begin sending audio
+int sendAudio(void)
+{
+	//MUSTS:
+	//	- get audio the user wants to send
+	//	- get senderID they want to send it to
+	//	- transmit the message
+	//COULDS:
+	//	- load saved audio and send it
+
+	long audioSize;
+	int status = 0;	//status of audio, 0 = no issue, 1 = issue
+
+	//set up recording settings
+	audioSetup();
+
+	//send audio size
+	audioSize = getAudioSize();
+	outputToPort(&audioSize, sizeof(audioSize));
+
+	//receive 'ok' to send audio
+	inputFromPort(&status, sizeof(status));
+	printf("\n\nStatus Received! Status = %d\n", status);
+	switch (status)
+	{
+	case 0:
+		//record audio
+		audioRecord();
+
+		printf("\nSize of audio data: %d, Size of audio should be: %d Ready to transmit?\n", sizeof(getAudio()), getAudioSize());	//temp
+		system("PAUSE");
+
+		//transmit audio
+		outputToPort(getAudio(), getAudioSize());
+		break;
+		
+	case 1:
+		printf("\nHandshake failed! Unable to send audio of previous size! Going to previous menu...\n");
+		break;
+	}
+
+	system("PAUSE");	//temp
 	return SUCCESS;
 }
