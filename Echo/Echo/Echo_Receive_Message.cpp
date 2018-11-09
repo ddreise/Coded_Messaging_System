@@ -14,6 +14,7 @@
 #include "Echo_Receive_Message.h"
 #include "Echo_Error.h"
 #include "Echo_Input.h"
+#include "Echo_Message.h"
 #include "Echo_Send_Message.h"
 #include "audio_handling.h"
 #include "RS232Comm.h"
@@ -35,7 +36,7 @@ int receiveMenu(void)
 		printf("\nReceive Message\n");
 
 		printf("\nWhat would you like to do?\n"
-			"1 - Receive Audio (NOT IMPLEMENTED)\n"
+			"1 - Receive Audio\n"
 			"2 - Receive Text\n"
 			"3 - Help (NOT IMPLEMENTED)\n"
 			"4 - Main Menu\n");
@@ -114,7 +115,6 @@ int receiveAudio(void)
 
 	//receive size of audio
 	inputFromPort(&audioSize, sizeof(audioSize));
-	printf("\nAudio size recieved! Size = %d\n", audioSize);
 
 	//send 'ok' if space is allocated for audio
 	audio = (short*)malloc(audioSize);
@@ -134,8 +134,6 @@ int receiveAudio(void)
 	outputToPort(&status, sizeof(status));
 	
 	//receive audio
-	printf("\nReady to receive audio?\n");
-	system("PAUSE");
 	inputFromPort(audio, audioSize);
 
 	//play audio

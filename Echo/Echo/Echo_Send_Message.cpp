@@ -14,6 +14,7 @@
 #include "Echo_Send_Message.h"
 #include "Echo_Error.h"
 #include "Echo_Input.h"
+#include "Echo_Message.h"
 #include "RS232Comm.h"
 #include "audio_handling.h"
 #include <stdio.h>
@@ -57,7 +58,7 @@ int sendMenu(void)
 		printf("\nSend Message\n");
 
 		printf("\nWhat would you like to do?\n"
-			"1 - Send Audio (NOT IMPLEMENTED)\n"
+			"1 - Send Audio\n"
 			"2 - Send Text\n"
 			"3 - Help (NOT IMPLEMENTED)\n"
 			"4 - Main Menu\n");
@@ -112,6 +113,8 @@ int sendText(void)
 	return SUCCESS;
 }
 
+#define AUDIO_V1
+#ifdef AUDIO_V1
 //wrapper to begin sending audio
 int sendAudio(void)
 {
@@ -134,15 +137,11 @@ int sendAudio(void)
 
 	//receive 'ok' to send audio
 	inputFromPort(&status, sizeof(status));
-	printf("\n\nStatus Received! Status = %d\n", status);
 	switch (status)
 	{
 	case 0:
 		//record audio
 		audioRecord();
-
-		printf("\nSize of audio data: %d, Size of audio should be: %d Ready to transmit?\n", sizeof(getAudio()), getAudioSize());	//temp
-		system("PAUSE");
 
 		//transmit audio
 		outputToPort(getAudio(), getAudioSize());
@@ -156,3 +155,14 @@ int sendAudio(void)
 	system("PAUSE");	//temp
 	return SUCCESS;
 }
+#endif
+
+//#define AUDIO_V2
+#ifdef AUDIO_V2
+int sendAudio(void)
+{
+
+
+	return SUCCESS;
+}
+#endif

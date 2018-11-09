@@ -15,6 +15,7 @@
 #include "Echo_Main.h"
 #include "Echo_Error.h"
 #include "Echo_Input.h"
+#include "Echo_Message.h"
 #include "Echo_Send_Message.h"
 #include "Echo_Receive_Message.h"
 #include "Echo_Phone_Book.h"

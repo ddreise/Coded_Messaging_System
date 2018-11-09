@@ -29,7 +29,7 @@ static  WAVEHDR WaveHeaderIn;
 /* ********************************************************************************************* */
 // Prototypes needed 
 void SetupFormat(WAVEFORMATEX *wf, int sampleRate, int bitsPerSample);			// Used by InitializePlayback()					
-int WaitOnHeader(WAVEHDR *wh, char cDit);										// Used by Playbuffer()
+int WaitOnHeader(WAVEHDR *wh, char cDit, long timeout);							// Used by Playbuffer()
 
 int	InitializePlayback(int sampleRate, int bitsPerSample)
 {
@@ -60,7 +60,7 @@ static void SetupFormat(WAVEFORMATEX *wf, int sampleRate, int bitsPerSample)
 }
 
 /* PlayBuffer() */
-int PlayBuffer(short *piBuf, long lSamples)
+int PlayBuffer(short *piBuf, long lSamples, long timeout)
 {
 	static	WAVEFORMATEX WaveFormat;	/* WAVEFORMATEX structure for reading in the WAVE fmt chunk */
 	static  WAVEHDR	WaveHeader;			/* WAVEHDR structure for this buffer */
@@ -83,23 +83,23 @@ int PlayBuffer(short *piBuf, long lSamples)
 	// play the buffer. This is NON-blocking.
 	mmErr = waveOutWrite(HWaveOut, &WaveHeader, sizeof(WAVEHDR));
 	// wait for completion
-	rc = WaitOnHeader(&WaveHeader, 0);
+	rc = WaitOnHeader(&WaveHeader, 0, timeout);
 	// give back resources
 	waveOutUnprepareHeader(HWaveOut, &WaveHeader, sizeof(WAVEHDR));
 	return(rc);
 }
 
 // Function needed by Playbuffer()
-static int WaitOnHeader(WAVEHDR *wh, char cDit)
+static int WaitOnHeader(WAVEHDR *wh, char cDit, long timeout)
 {
 	long	lTime = 0;
-	// wait for whatever is being played, to finish. Quit after 10 seconds.
+	// wait for whatever is being played, to finish. Quit after timeout seconds.
 	for (; ; ) {
 		if (wh->dwFlags & WHDR_DONE) return(0);
 		// idle for a bit so as to free CPU
 		Sleep(100L);
 		lTime += 100;
-		if (lTime >= 10000) return(-4);  // timeout period
+		if (lTime >= timeout) return(-4);  // timeout period
 		if (cDit) printf("%c", cDit);
 	}
 }
@@ -144,7 +144,7 @@ int InitializeRecording(short* piBuf, long lBufSize, int sampleRate, int bitsPer
 
 }
 
-int	RecordBuffer(short *piBuf, long lBufSize)
+int	RecordBuffer(short *piBuf, long lBufSize, long timeout)
 {
 	static	WAVEFORMATEX WaveFormat;	/* WAVEFORMATEX structure for reading in the WAVE fmt chunk */
 	static  WAVEHDR	WaveHeader;			/* WAVEHDR structure for this buffer */
@@ -171,7 +171,7 @@ int	RecordBuffer(short *piBuf, long lBufSize)
 	// Record the buffer. This is NON-blocking.
 	mmErr = waveInStart(HWaveIn);
 	// wait for completion
-	rc = WaitOnHeader(&WaveHeader, '.');
+	rc = WaitOnHeader(&WaveHeader, '.', timeout);
 	// stop input
 	waveInStop(HWaveIn);
 	return(rc);

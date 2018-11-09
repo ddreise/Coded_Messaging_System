@@ -125,7 +125,7 @@ int audioSetup(void)
 //wrapper that interfaces with audio recording software
 int audioRecord(void)
 {
-	RecordBuffer(iBigBuf, lBigBufSize);											//record!
+	RecordBuffer(iBigBuf, lBigBufSize, iRecSec*1000);							//record!
 	CloseRecording();															//close recording
 
 	return 0;
@@ -139,7 +139,7 @@ int audioPlayback(void)
 
 	//execute playback!
 	InitializePlayback(sampleRate, bitsPerSample);
-	PlayBuffer(iBigBuf, lBigBufSize);
+	PlayBuffer(iBigBuf, lBigBufSize, iRecSec*1000);
 	ClosePlayback();
 
 	return 0;

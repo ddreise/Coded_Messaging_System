@@ -14,10 +14,6 @@
 #ifndef ECHO_SEND_MESSAGE_H
 #define ECHO_SEND_MESSAGE_H
 
-//constants
-#define COM_LENGTH 5
-#define MAX_ID_LENGTH 11
-
 typedef enum SEND_MENU_CHOICE
 {
 	SEND_FAIL,
