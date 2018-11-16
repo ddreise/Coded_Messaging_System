@@ -20,12 +20,12 @@
 /* ************************ */
 // Playback
 int InitializePlayback(int sampleRate, int bitsPerSample);
-int PlayBuffer(short *piBuf, long lBufSize);
+int PlayBuffer(short *piBuf, long lBufSize, long timeout);
 void ClosePlayback(void);
 
 // Recording
 int InitializeRecording(short* piBuf, long lSamples, int sampleRate, int bitsPerSample);
-int	RecordBuffer(short *piBuf, long lBufSize);
+int	RecordBuffer(short *piBuf, long lBufSize, long timeout);
 void CloseRecording(void);
 
 

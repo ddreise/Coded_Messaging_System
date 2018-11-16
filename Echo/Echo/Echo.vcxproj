@@ -116,12 +116,29 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="audio_handling.cpp" />
+    <ClCompile Include="Echo_Error.cpp" />
+    <ClCompile Include="Echo_Frame.cpp" />
+    <ClCompile Include="Echo_Input.cpp" />
+    <ClCompile Include="Echo_Main.cpp" />
+    <ClCompile Include="Echo_Main_Help.cpp" />
+    <ClCompile Include="Echo_Phone_Book.cpp" />
+    <ClCompile Include="Echo_Receive_Message.cpp" />
+    <ClCompile Include="Echo_Send_Message.cpp" />
     <ClCompile Include="RS232Comm.cpp" />
     <ClCompile Include="sound.cpp" />
     <ClCompile Include="source.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="audio_handling.h" />
+    <ClInclude Include="Echo_Error.h" />
+    <ClInclude Include="Echo_Frame.h" />
+    <ClInclude Include="Echo_Input.h" />
+    <ClInclude Include="Echo_Main.h" />
+    <ClInclude Include="Echo_Main_Help.h" />
+    <ClInclude Include="Echo_Message.h" />
+    <ClInclude Include="Echo_Phone_Book.h" />
+    <ClInclude Include="Echo_Receive_Message.h" />
+    <ClInclude Include="Echo_Send_Message.h" />
     <ClInclude Include="RS232Comm.h" />
     <ClInclude Include="sound.h" />
   </ItemGroup>

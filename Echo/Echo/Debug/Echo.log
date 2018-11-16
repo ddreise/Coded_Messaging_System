@@ -1,9 +1,9 @@
-﻿  audio_handling.cpp
-c:\users\justin\documents\github\coded_messaging_system\echo\echo\audio_handling.cpp(89): warning C4244: 'argument': conversion from 'float' to 'size_t', possible loss of data
-c:\users\justin\documents\github\coded_messaging_system\echo\echo\audio_handling.cpp(97): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-c:\users\justin\documents\github\coded_messaging_system\echo\echo\audio_handling.cpp(111): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-  RS232Comm.cpp
-  sound.cpp
-  source.cpp
+﻿  Echo_Main.cpp
+c:\github\coded_messaging_system\echo\echo\echo_message.h(39): warning C4091: 'typedef ': ignored on left of 'FRAME_AUDIO_MESSAGE' when no variable is declared
+  Echo_Receive_Message.cpp
+c:\github\coded_messaging_system\echo\echo\echo_message.h(39): warning C4091: 'typedef ': ignored on left of 'FRAME_AUDIO_MESSAGE' when no variable is declared
+c:\github\coded_messaging_system\echo\echo\echo_receive_message.cpp(92): warning C4018: '<': signed/unsigned mismatch
+  Echo_Send_Message.cpp
+c:\github\coded_messaging_system\echo\echo\echo_message.h(39): warning C4091: 'typedef ': ignored on left of 'FRAME_AUDIO_MESSAGE' when no variable is declared
   Generating Code...
-  Echo.vcxproj -> C:\Users\Justin\Documents\GitHub\Coded_Messaging_System\Echo\Debug\Echo.exe
+  Echo.vcxproj -> C:\GitHub\Coded_Messaging_System\Echo\Debug\Echo.exe

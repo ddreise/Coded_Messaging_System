@@ -5,6 +5,8 @@ VisualStudioVersion = 15.0.28010.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Echo", "Echo\Echo.vcxproj", "{A65FC369-F235-415A-870D-DA94C35744CC}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Dummy", "Dummy\Dummy.vcxproj", "{BB8F1886-F37E-470C-8CB3-AA317B82B20A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -21,6 +23,14 @@ Global
 		{A65FC369-F235-415A-870D-DA94C35744CC}.Release|x64.Build.0 = Release|x64
 		{A65FC369-F235-415A-870D-DA94C35744CC}.Release|x86.ActiveCfg = Release|Win32
 		{A65FC369-F235-415A-870D-DA94C35744CC}.Release|x86.Build.0 = Release|Win32
+		{BB8F1886-F37E-470C-8CB3-AA317B82B20A}.Debug|x64.ActiveCfg = Debug|x64
+		{BB8F1886-F37E-470C-8CB3-AA317B82B20A}.Debug|x64.Build.0 = Debug|x64
+		{BB8F1886-F37E-470C-8CB3-AA317B82B20A}.Debug|x86.ActiveCfg = Debug|Win32
+		{BB8F1886-F37E-470C-8CB3-AA317B82B20A}.Debug|x86.Build.0 = Debug|Win32
+		{BB8F1886-F37E-470C-8CB3-AA317B82B20A}.Release|x64.ActiveCfg = Release|x64
+		{BB8F1886-F37E-470C-8CB3-AA317B82B20A}.Release|x64.Build.0 = Release|x64
+		{BB8F1886-F37E-470C-8CB3-AA317B82B20A}.Release|x86.ActiveCfg = Release|Win32
+		{BB8F1886-F37E-470C-8CB3-AA317B82B20A}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
