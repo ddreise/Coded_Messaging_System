@@ -26,6 +26,8 @@ typedef enum FRAME_MENU_CHOICE
 }FRAME_MENU_CHOICE;
 
 //prototypes
-int frameMenu(void);	//manages frame menu
+int frameMenu(void);			//manages frame menu (Echo_Frame.cpp)
+int frameSendQuote(void);		//wrapper for sending quotes (Echo_Frame.cpp)
+int frameReceiveQuote(void);	//wrapper for receiving quotes (Echo_Frame.cpp)
 
 #endif

@@ -1,9 +1,6 @@
-﻿  Echo_Main.cpp
-c:\github\coded_messaging_system\echo\echo\echo_message.h(39): warning C4091: 'typedef ': ignored on left of 'FRAME_AUDIO_MESSAGE' when no variable is declared
-  Echo_Receive_Message.cpp
-c:\github\coded_messaging_system\echo\echo\echo_message.h(39): warning C4091: 'typedef ': ignored on left of 'FRAME_AUDIO_MESSAGE' when no variable is declared
-c:\github\coded_messaging_system\echo\echo\echo_receive_message.cpp(92): warning C4018: '<': signed/unsigned mismatch
-  Echo_Send_Message.cpp
+﻿  Echo_Frame.cpp
+c:\github\coded_messaging_system\echo\echo\echo_frame.cpp(86): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+  Echo_Main.cpp
 c:\github\coded_messaging_system\echo\echo\echo_message.h(39): warning C4091: 'typedef ': ignored on left of 'FRAME_AUDIO_MESSAGE' when no variable is declared
   Generating Code...
   Echo.vcxproj -> C:\GitHub\Coded_Messaging_System\Echo\Debug\Echo.exe

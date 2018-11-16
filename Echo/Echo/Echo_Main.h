@@ -30,6 +30,7 @@ typedef enum MAIN_MENU_CHOICE
 int startInit(void);				//handles initial communication requirements (COM, sender id, etc)
 int mainMenu(void);					//handles main menu screen of Echo
 int exit(void);						//exits Echo (releases necessary info, end of program management)
+char* getSenderID(void);			//returns the sender ID
 
 #endif
 

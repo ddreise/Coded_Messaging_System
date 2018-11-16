@@ -26,6 +26,10 @@
 #include <stdio.h>
 #include <string.h>
 
+//important variables
+static char senderId[MAX_ID_LENGTH];
+static char comPort[COM_LENGTH];
+
 //functions
 
 //handles initial communication requirements (COM, sender id, etc)
@@ -37,12 +41,22 @@ int startInit(void)
 	//COULDS:
 	//	- save user input for next time and check for previous input when program starts
 
-	char senderId[MAX_ID_LENGTH];
-	char comPort[COM_LENGTH];
+	//disposable
+	int i;
 
 	//get user (sender) id
 	printf("\nPlease enter a user id (this will be used as the sender id). Max of %d characters.\n", MAX_ID_LENGTH-1);
 	fgets(senderId, MAX_ID_LENGTH, stdin);
+
+	//eliminate \n from senderId
+	for (i = 0; i < MAX_ID_LENGTH; i++)
+	{
+		if (senderId[i] == '\n')
+		{
+			senderId[i] = '\0';
+			break;
+		}
+	}
 
 	//get communication port
 	printf("\nPlease enter the com port to be used for communications (INPUT AS SHOWN: \"COM#\").\n");
@@ -121,3 +135,5 @@ int exit(void)
 
 	return SUCCESS;
 }
+
+char* getSenderID(void) { return senderId; }
