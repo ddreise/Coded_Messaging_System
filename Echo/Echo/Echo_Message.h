@@ -18,6 +18,7 @@
 #define COM_LENGTH 5
 #define MAX_ID_LENGTH 11
 #define AUDIO_MESSAGE_SIZE 80000
+#define MAX_QUOTE_LENGTH 140
 
 //structure for header of audio message frame
 typedef struct FRAME_AUDIO_HEADER

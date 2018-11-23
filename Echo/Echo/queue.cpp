@@ -9,6 +9,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "queue.h"
+#include "Echo_Frame.h"
 
 static Link pHead;
 static Link pTail;

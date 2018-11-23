@@ -9,18 +9,28 @@
 #ifndef QUEUE_H
 #define QUEUE_H
 
+#include "Echo_Frame.h"
+
 #define MESSAGE_SIZE 140
 
-#include "message.h"	//neccessary for item part of node
+//#include "message.h"	//neccessary for item part of node
+//
+//typedef struct node Node; //typedef it as a user friendly word like Node
+//typedef Node* Link; //link will be a pointer to the next node
+//
+////Structure for a linked list which will have data and a pointer to the next struct
+//struct node
+//{
+//    Item Data;
+//    Link pNext;
+//};
 
-typedef struct node Node; //typedef it as a user friendly word like Node
-typedef Node* Link; //link will be a pointer to the next node
-
-//Structure for a linked list which will have data and a pointer to the next struct
+//structs
+typedef struct node* Link;
 struct node
 {
-    Item Data;
-    Link pNext;
+	FRAME data;
+	Link pNext;
 };
 
 void InitQueue(void);       //Initialize queue

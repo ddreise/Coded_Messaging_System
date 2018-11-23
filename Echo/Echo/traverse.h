@@ -11,8 +11,9 @@
 
 #include "queue.h"
 
-void traverse(Link startNode, void (*visit) (Link));     //calls visit on each node in a list in forward order
-void traverseR(Link startNode, void (*visit) (Link));    //calls visit on each node in a list in reverse order
+void traverse(Link startNode, void (*visit) (Link));		//calls visit on each node in a list in forward order
+void traverseR(Link startNode, void (*visit) (Link));		//calls visit on each node in a list in reverse order
+int countNodes(Link startNode);								//counts number of nodes in queue
 
 void printMessage(Link node);                            //prints the message of the desired node
 #endif

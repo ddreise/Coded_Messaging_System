@@ -31,7 +31,23 @@ void traverseR(Link endNode, void (*visit) (Link))
     (*visit) (endNode); //calls visit after recursive call so we go in backwards order
 }
 
+//counts number of nodes in queue
+int countNodes(Link startNode)
+{
+	//check for valid node
+	if (startNode == NULL) return 0;
+
+	return 1 + countNodes(startNode->pNext);
+}
+
 void printMessage(Link node)
 {
-    printf("%s\n", node->Data.message);
+	printf("\nMESSAGE DETAILS:\n"
+		"Receiver Address:	0x%x\n"
+		"Version:			%d\n"
+		"Data Length:		%ld\n"
+		"MESSAGE:\n"
+		"%s"
+		"\n",
+		node->data.header.bReceiverAddr, node->data.header.bVersion, node->data.header.lDataLength, node->data.message);
 }

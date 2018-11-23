@@ -12,7 +12,7 @@
 // Ensure that default character set is not Unicode
 // Communication variables and parameters
 HANDLE hCom;										// Pointer to a COM port
-int nComRate = 128000;								// Baud (Bit) rate in bits/second 
+int nComRate = 12000;								// Baud (Bit) rate in bits/second 
 int nComBits = 8;									// Number of bits per frame
 COMMTIMEOUTS timeout;								// A commtimout struct variable
 

@@ -13,7 +13,7 @@
 #define INPUT_BUFFER 500
 
  //item is the structure containing all the data for the message
-typedef struct item
+typedef struct
 {
 	char message[MAX_QUOTE_LENGTH]; //Message to send
 	unsigned short senderId = 0;    //Id of sender
