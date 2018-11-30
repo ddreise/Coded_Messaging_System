@@ -116,6 +116,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="audio_handling.cpp" />
+    <ClCompile Include="Echo_Compress.cpp" />
     <ClCompile Include="Echo_Error.cpp" />
     <ClCompile Include="Echo_Frame.cpp" />
     <ClCompile Include="Echo_Input.cpp" />
@@ -130,6 +131,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="audio_handling.h" />
+    <ClInclude Include="Echo_Compress.h" />
     <ClInclude Include="Echo_Error.h" />
     <ClInclude Include="Echo_Frame.h" />
     <ClInclude Include="Echo_Input.h" />

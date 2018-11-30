@@ -16,6 +16,7 @@
 #include "Echo_Input.h"
 #include "Echo_Message.h"
 #include "RS232Comm.h"
+#include "Echo_Compress.h"
 #include "audio_handling.h"
 #include <stdio.h>
 #include <Windows.h>
@@ -121,6 +122,7 @@ int sendAudio(void)
 	//MUSTS:
 	//	- get audio the user wants to send
 	//	- get senderID they want to send it to
+	//	- compressed with RLE/Huffman
 	//	- transmit the message
 	//COULDS:
 	//	- load saved audio and send it
@@ -142,6 +144,9 @@ int sendAudio(void)
 	case 0:
 		//record audio
 		audioRecord();
+
+		//compress audio
+		//compressAudio((unsigned char*)getAudio(),getAudioSize());
 
 		//transmit audio
 		outputToPort(getAudio(), getAudioSize());
