@@ -25,6 +25,9 @@
 #include <malloc.h>
 #include <time.h>
 
+//Static Variables
+static Link* priorityQueue;	//used to hold the priority of the 
+
 //functions
 
 //manages frame menu
@@ -117,6 +120,9 @@ int frameSendText(void)
 
 	for (i = 0; i < MAX_QUOTE_LENGTH + 1; i++) data->data.message[i] = 0;	//clear message to 0's
 
+	printf("\nWhat is the priority of the message? ");																//get priority of the message
+	data->data.header.sPriority = (short)getMenuChoice();
+
 	printf("\nType the message you want to send: \n");
 	fgets(data->data.message, MAX_QUOTE_LENGTH, stdin);
 	system("CLS");
@@ -134,10 +140,11 @@ int frameSendText(void)
 		"Receiver Address:	0x%x\n"
 		"Version:			%d\n"
 		"Data Length:		%ld\n"
+		"Priority:			%d\n"
 		"MESSAGE:\n"
 		"%s"
 		"\n",
-		data->data.header.bReceiverAddr, data->data.header.bVersion, data->data.header.lDataLength, data->data.message);
+		data->data.header.bReceiverAddr, data->data.header.bVersion, data->data.header.lDataLength, data->data.header.sPriority, data->data.message);
 
 	system("PAUSE");
 

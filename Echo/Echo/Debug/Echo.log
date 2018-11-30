@@ -1,10 +1,1 @@
-﻿  Echo_Frame.cpp
-c:\github\coded_messaging_system\echo\echo\echo_message.h(40): warning C4091: 'typedef ': ignored on left of 'FRAME_AUDIO_MESSAGE' when no variable is declared
-c:\github\coded_messaging_system\echo\echo\echo_frame.cpp(159): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
-c:\github\coded_messaging_system\echo\echo\echo_frame.cpp(240): warning C4101: 'i': unreferenced local variable
-  Echo_Main.cpp
-c:\github\coded_messaging_system\echo\echo\echo_message.h(40): warning C4091: 'typedef ': ignored on left of 'FRAME_AUDIO_MESSAGE' when no variable is declared
-  queue.cpp
-  traverse.cpp
-  Generating Code...
-  Echo.vcxproj -> C:\GitHub\Coded_Messaging_System\Echo\Debug\Echo.exe
+﻿  Echo.vcxproj -> C:\Users\Justin\Documents\GitHub\Coded_Messaging_System\Echo\Debug\Echo.exe
