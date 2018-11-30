@@ -26,12 +26,11 @@ int compressAudio(unsigned char* audio, int iInLen) {
 	unsigned char *input;						// input pointer array
 	unsigned char *output;						// output pointer array
 	long int length;							// variable to hold the length of the compressed string
-
 	
 	input = (unsigned char*)calloc(strlen((const char*)audio), sizeof(char));
 	output = (unsigned char*)calloc(strlen((const char*)audio), sizeof(char));
 
-	int iInLen = strlen((const char*)audio);			// get length of buffer
+	//int iInLen = strlen((const char*)audio);			// get length of buffer
 	int iOutLen = strlen((const char*)audio);
 
 	length = RLEncode(audio, iInLen, output, iOutLen, ESCAPECHAR);		// ENCODE MESSAGE

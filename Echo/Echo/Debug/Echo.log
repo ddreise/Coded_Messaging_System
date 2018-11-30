@@ -1,2 +1,1 @@
-﻿  Echo_Compress.cpp
-c:\users\ddreise6630\google drive\coded_messaging_system\echo\echo\echo_compress.cpp : fatal error C1041: cannot open program database 'C:\Users\ddreise6630\Google Drive\Coded_Messaging_System\Echo\Echo\Debug\vc141.pdb'; if multiple CL.EXE write to the same .PDB file, please use /FS
+﻿  Echo.vcxproj -> C:\GitHub\Coded_Messaging_System\Echo\Debug\Echo.exe
