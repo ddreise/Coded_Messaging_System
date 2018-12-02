@@ -20,7 +20,7 @@
 #include <string.h>
 #include "Echo_Compress.h"
 
-// Wrapper function
+// Wrapper function for compression
 int compressAudio(unsigned char* audio, int iInLen) {
 	
 	unsigned char *input;						// input pointer array
@@ -37,6 +37,25 @@ int compressAudio(unsigned char* audio, int iInLen) {
 
 	return(0);
 }
+
+// Wrapper function for decompression
+int decompressAudio(unsigned char* audio, int iInLen){
+	
+	unsigned char *input;
+	unsigned char *output;
+	long int length;
+
+	input = (unsigned char*)calloc(strlen((const char*)audio), sizeof(char));
+	output = (unsigned char*)calloc(strlen((const char*)audio), sizeof(char));
+
+	//int iInLen = strlen((const char*)audio);			// get length of buffer
+	int iOutLen = strlen((const char*)audio);
+
+	length = RLDecode(audio, iInLen, output, iOutLen, ESCAPECHAR);
+
+	return(0);
+}
+
 
 // Function to ENCODE message
 int RLEncode(unsigned char* input, int iInLen, unsigned char* output, int iOutLen, unsigned char charEsc) {
