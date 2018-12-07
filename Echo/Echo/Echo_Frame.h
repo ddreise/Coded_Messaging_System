@@ -38,6 +38,7 @@ typedef enum FRAME_MENU_CHOICE
 typedef struct HEADER
 {
 	BYTE bReceiverAddr;			//receiver ID. 0xFF = broadcast
+	BYTE bSenderAddr;			//sender ID
 	BYTE bVersion;				//must be 1 for version 1
 	long lDataLength;			//size of message
 	char cSettings[2];			//settings[0]: 0 for no compression, 1 for RLE, 2 for HUFFMAN, 3 for RLE and HUFFMAN

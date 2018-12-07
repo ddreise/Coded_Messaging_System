@@ -69,6 +69,9 @@ int startInit(void)
 	//initialize (open) the port
 	initPort(comPort);
 
+	//initialize phone book binary search tree
+	BSTInit();
+
 	getchar();
 
 	system("CLS");

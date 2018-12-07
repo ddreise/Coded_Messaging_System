@@ -1,0 +1,7 @@
+﻿  Echo_Frame.cpp
+c:\users\ddreise6630\google drive\coded_messaging_system\echo\echo\echo_message.h(40): warning C4091: 'typedef ': ignored on left of 'FRAME_AUDIO_MESSAGE' when no variable is declared
+c:\users\ddreise6630\google drive\coded_messaging_system\echo\echo\echo_frame.cpp(137): warning C4267: '=': conversion from 'size_t' to 'long', possible loss of data
+c:\users\ddreise6630\google drive\coded_messaging_system\echo\echo\echo_frame.cpp(168): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+c:\users\ddreise6630\google drive\coded_messaging_system\echo\echo\echo_frame.cpp(196): warning C4267: '=': conversion from 'size_t' to 'long', possible loss of data
+c:\users\ddreise6630\google drive\coded_messaging_system\echo\echo\echo_frame.cpp(249): warning C4101: 'i': unreferenced local variable
+  Echo.vcxproj -> C:\Users\ddreise6630\Google Drive\Coded_Messaging_System\Echo\x64\Debug\Echo.exe

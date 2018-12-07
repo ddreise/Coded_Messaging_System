@@ -1,1 +1,6 @@
-﻿  Echo.vcxproj -> C:\Users\ddreise6630\Google Drive\Coded_Messaging_System\Echo\Debug\Echo.exe
+﻿  Echo_Frame.cpp
+c:\users\ddreise6630\google drive\coded_messaging_system\echo\echo\echo_message.h(40): warning C4091: 'typedef ': ignored on left of 'FRAME_AUDIO_MESSAGE' when no variable is declared
+c:\users\ddreise6630\google drive\coded_messaging_system\echo\echo\echo_frame.cpp(168): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+c:\users\ddreise6630\google drive\coded_messaging_system\echo\echo\echo_frame.cpp(288): error C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.17134.0\ucrt\string.h(133): note: see declaration of 'strcpy'
+c:\users\ddreise6630\google drive\coded_messaging_system\echo\echo\echo_frame.cpp(249): warning C4101: 'i': unreferenced local variable

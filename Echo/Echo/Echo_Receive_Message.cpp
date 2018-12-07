@@ -16,6 +16,7 @@
 #include "Echo_Input.h"
 #include "Echo_Message.h"
 #include "Echo_Send_Message.h"
+#include "Echo_Phone_Book.h"
 #include "audio_handling.h"
 #include "RS232Comm.h"
 #include <stdio.h>
@@ -77,12 +78,10 @@ int receiveText(void)
 	//	- get receiveId of message sent
 	//COULDS:
 	//	- log messages in a .txt
-	printf("\nbreakpoint\n\n");				// TEST POINT
 	int i;	//disposable
 
 	//receive the message
 	inputFromPort(inBuff, MAX_BUFFER_SIZE);
-	printf("\nbreakpoint2\n\n");			// TEST POINT
 	printf("\nMessage Received:\n");
 	printf("%s\n", inBuff);
 

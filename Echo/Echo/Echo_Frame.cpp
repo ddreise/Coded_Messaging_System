@@ -10,6 +10,7 @@
 *
 *  Thursday, November 05, 2018
 */
+//#define _CTR_SECURE_NO_WARNINGS
 
 #include "Echo_Frame.h"
 #include "Echo_Error.h"
@@ -20,6 +21,7 @@
 #include "RS232Comm.h"
 #include "Echo_Main.h"
 #include "Echo_Message.h"
+#include "Echo_Phone_Book.h"
 #include <stdio.h>
 #include <Windows.h>
 #include <malloc.h>
@@ -246,6 +248,7 @@ int frameReceiveText(void)
 
 	int i;	//disposable
 	Link data;
+	tlink item;
 
 	//allocate space for data
 	data = (Link)calloc(1, sizeof(*data));
@@ -253,6 +256,12 @@ int frameReceiveText(void)
 	{
 		printf("\nMEMORY ERROR: Unable to allocate space for data!\n");
 		return -2;
+	}
+
+	item = (tlink)calloc(1, sizeof(*item));
+	if (item == NULL) {
+		printf("\nMEMORY ERROR: Unable to allocate space for item!\n");
+		return -3;
 	}
 
 	//receive the message
@@ -275,6 +284,16 @@ int frameReceiveText(void)
 	printf("\nMESSAGE STORED IN QUEUE!\n");
 	printf("\nTHERE ARE %d MESSAGES IN QUEUE\n", countNodes(AccessQueue()));
 
+	//transfer data to ID struct
+	//strcpy((char*)data->data.header.bReceiverAddr, item->item.address);
+	strcpy_s((char*)data->data.header.bReceiverAddr, sizeof(BYTE), item->item.address);
+	//item->item.address = (char*)data->data.header.bReceiverAddr;
+	
+	//store sender ID
+	Insert(item->item);
+	printf("\nSENDER ID STORED IN PHONEBOOK!\n");
+	//BSTPrint(item);
+	
 	return SUCCESS;
 }
 
