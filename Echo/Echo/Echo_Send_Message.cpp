@@ -146,10 +146,10 @@ int sendAudio(void)
 		audioRecord();
 
 		//compress audio
-		//compressAudio((unsigned char*)getAudio(),getAudioSize());
+		audioSize = compressAudio((unsigned char*)getAudio(),getAudioSize());
 
 		//transmit audio
-		outputToPort(getAudio(), getAudioSize());
+		outputToPort(getCompressedAudio(), audioSize);
 		break;
 		
 	case 1:

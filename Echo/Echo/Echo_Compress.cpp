@@ -20,6 +20,8 @@
 #include <string.h>
 #include "Echo_Compress.h"
 
+unsigned char* compressedAudio;
+
 // Wrapper function for compression
 int compressAudio(unsigned char* audio, int iInLen) {
 	
@@ -88,6 +90,9 @@ int RLEncode(unsigned char* input, int iInLen, unsigned char* output, int iOutLe
 				count = 1;															// reset repetition counter
 			}
 		}
+
+		compressedAudio = output;						// for easy access to functions outside
+
 		return(strlen((char*)output));					// return string length of compressed buffer
 	}
 
@@ -138,4 +143,8 @@ int RLDecode(unsigned char *input, int iInLen, unsigned char *output, int iOutLe
 	printf("Error: Decompression Overflow!");
 	return(1);
 
+}
+
+unsigned char* getCompressedAudio(void) {
+	return compressedAudio;
 }

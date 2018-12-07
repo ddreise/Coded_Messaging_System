@@ -19,5 +19,7 @@
 int compressAudio(unsigned char* audio, int iInLen);
 int RLEncode(unsigned char *input, int iInLen, unsigned char *output, int iOutLen, unsigned char cEscape);
 int RLDecode(unsigned char *input, int iInLen, unsigned char *output, int iOutLen, unsigned char cEscape);
+unsigned char* getCompressedAudio(void);
+
 
 #endif
