@@ -45,7 +45,8 @@ int startInit(void)
 	int i;
 
 	//get user (sender) id
-	printf("\nPlease enter a user id (this will be used as the sender id). Max of %d characters.\n", MAX_ID_LENGTH-1);
+	printf("\nPlease enter your user id (Max of %d characters).\n", MAX_ID_LENGTH-1);
+	
 	fgets(senderId, MAX_ID_LENGTH, stdin);
 
 	//eliminate \n from senderId
@@ -59,7 +60,7 @@ int startInit(void)
 	}
 
 	//get communication port
-	printf("\nPlease enter the com port to be used for communications (INPUT AS SHOWN: \"COM#\").\n");
+	printf("\nPlease enter your com port number (INPUT AS SHOWN: \"COM#\").\n");
 	fgets(comPort, COM_LENGTH, stdin);
 
 	//save senderId and comport to static variables in Echo_Send_Message.h
@@ -92,8 +93,7 @@ int mainMenu(void)
 				"2 - Receive Message\n"
 				"3 - Phone Book\n"
 				"4 - Frame\n"
-				"5 - Help (NOT IMPLEMENTED)\n"
-				"6 - Exit\n");
+				"5 - Exit\n");
 		choice = (MAIN_MENU_CHOICE)getMenuChoice();
 		system("CLS");
 
@@ -115,10 +115,6 @@ int mainMenu(void)
 			error(frameMenu);
 			break;
 
-		case MAIN_MENU_HELP:
-			//error(mainHelp);
-			break;
-
 		case EXIT:
 			printf("\nExitting now...\n");
 			return SUCCESS;	//exits the program with no error
@@ -126,7 +122,7 @@ int mainMenu(void)
 		
 		case MAIN_FAIL:
 		default:
-			printf("\nThat is an incorrect option. You're a loser. Try again :)\n");
+			printf("\nThat is an incorrect option. Try again :)\n");
 			break;
 		}
 	}

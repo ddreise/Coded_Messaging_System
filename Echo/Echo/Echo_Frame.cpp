@@ -10,7 +10,7 @@
 *
 *  Thursday, November 05, 2018
 */
-//#define _CTR_SECURE_NO_WARNINGS
+#define _CRT_SECURE_NO_WARNINGS
 
 #include "Echo_Frame.h"
 #include "Echo_Error.h"
@@ -43,13 +43,12 @@ int frameMenu(void)
 
 		printf("\nWhat would you like to do?\n"
 			"1 - Send a text message\n"
-			"2 - Send a random quote (NOT IMPLEMENTED)\n"
+			"2 - Send a random quote\n"
 			"3 - Send multiple texts\n"
-			"4 - Receive a text message (NOT IMPLMENTED)\n"
+			"4 - Receive a text message\n"
 			"5 - Receive multiple texts\n"
 			"6 - Print Messages in Queue\n"
-			"7 - Help (NOT IMPLEMENTED)\n"
-			"8 - Main Menu\n");
+			"7 - Main Menu\n");
 		choice = (FRAME_MENU_CHOICE)getMenuChoice();
 		system("CLS");
 
@@ -80,10 +79,7 @@ int frameMenu(void)
 		case FRAME_PRINT_QUEUE:
 			error(framePrintQueue);
 			break;
-			
-		case FRAME_HELP:
-			//frameHelp();
-			break;
+		
 			
 		case FRAME_MAIN_MENU:
 			return SUCCESS;
@@ -111,6 +107,7 @@ int frameSendText(void)
 	int i;
 	
 	Link data;	//holds data to transmit
+	char senderID[10];
 
 	//allocate space for data
 	data = (Link)calloc(1, sizeof(*data));
@@ -125,12 +122,23 @@ int frameSendText(void)
 	printf("\nWhat is the priority of the message? ");																//get priority of the message
 	data->data.header.sPriority = (short)getMenuChoice();
 
+	printf("\nWho would you like to send it to? ");
+	scanf("%s", data->data.header.bReceiverAddr);
+	getchar();
+
 	printf("\nType the message you want to send: \n");
 	fgets(data->data.message, MAX_QUOTE_LENGTH, stdin);
 	system("CLS");
 
+	strcpy(senderID, getSenderID());
+
+	//set sender ID to header
+	for (i = 0; i < 10; i++) data->data.header.bSenderAddr[i] = senderID[i];
+
 	//set header
-	data->data.header.bReceiverAddr = 0xFF;
+	//const char receiver[10] = "Test";
+
+	//for (i = 0; i < 10; i++) data->data.header.bReceiverAddr[i] = receiver[i];
 	data->data.header.bVersion = 1;
 
 	//set size of message
@@ -139,14 +147,15 @@ int frameSendText(void)
 	outputToPort(data, sizeof(*data));	//output to the port
 
 	printf("\nMESSAGE DETAILS:\n"
-		"Receiver Address:	0x%x\n"
-		"Version:			%d\n"
+		"Sender Address:		%s\n"	
+		"Receiver Address:	%s\n"
+		"Version:		%d\n"
 		"Data Length:		%ld\n"
-		"Priority:			%d\n"
+		"Priority:		%d\n"
 		"MESSAGE:\n"
 		"%s"
 		"\n",
-		data->data.header.bReceiverAddr, data->data.header.bVersion, data->data.header.lDataLength, data->data.header.sPriority, data->data.message);
+		data->data.header.bSenderAddr, data->data.header.bReceiverAddr, data->data.header.bVersion, data->data.header.lDataLength, data->data.header.sPriority, data->data.message);
 
 	system("PAUSE");
 
@@ -172,6 +181,7 @@ int frameSendQuote(void)
 	int numQuotes;				//holds number of quotes
 	long int* indiceQuotes;		//holds indices for quotes
 	int* lengthQuotes;			//holds length for quotes
+	int i;
 
 	//set up for message sending
 	numQuotes = fnumQuotes();
@@ -189,7 +199,9 @@ int frameSendQuote(void)
 	GetMessageFromFile(data->data.message, randNum, numQuotes, indiceQuotes, lengthQuotes);
 
 	//set header
-	data->data.header.bReceiverAddr = 0xFF;
+	const char receiver[10] = "Test";
+
+	for(i = 0; i < 10; i++) data->data.header.bReceiverAddr[i] = receiver[i];
 	data->data.header.bVersion = 1;
 
 	//set size of message
@@ -247,8 +259,11 @@ int frameReceiveText(void)
 	//	- log messages in a .txt
 
 	int i;	//disposable
+	int height;
+	char *senderID;
 	Link data;
 	tlink item;
+	tlink root;
 
 	//allocate space for data
 	data = (Link)calloc(1, sizeof(*data));
@@ -264,37 +279,55 @@ int frameReceiveText(void)
 		return -3;
 	}
 
+	senderID = getSenderID();
 	//receive the message
 	inputFromPort(data, sizeof(*data));
 
-	printf("\nMessage Received!\n"
-		"MESSAGE DETAILS:\n"
-		"Receiver Address:	0x%x\n"
-		"Version:			%d\n"
-		"Data Length:		%ld\n"
-		"MESSAGE:\n"
-		"%s"
-		"\n",
-		data->data.header.bReceiverAddr, data->data.header.bVersion, data->data.header.lDataLength, data->data.message);
 
-	//store message in queue
-	if (IsQueueEmpty()) InitQueue();
+	if (strcmp(data->data.header.bReceiverAddr, senderID)) {
+		printf("There are no messages for you....sorry\n");
+		return SUCCESS;
+	}
+	else {
+		printf("\nMessage Received!\n"
+			"MESSAGE DETAILS:\n"
+			"Sender Address:		%s\n"
+			"Receiver Address:	%s\n"
+			"Version:		%d\n"
+			"Data Length:		%ld\n"
+			"MESSAGE:\n"
+			"%s"
+			"\n",
+			data->data.header.bSenderAddr, data->data.header.bReceiverAddr, data->data.header.bVersion, data->data.header.lDataLength, data->data.message);
 
-	EnQueue(data);
-	printf("\nMESSAGE STORED IN QUEUE!\n");
-	printf("\nTHERE ARE %d MESSAGES IN QUEUE\n", countNodes(AccessQueue()));
+		//store message in queue
+		if (IsQueueEmpty()) InitQueue();
 
-	//transfer data to ID struct
-	//strcpy((char*)data->data.header.bReceiverAddr, item->item.address);
-	//strcpy_s((char*)data->data.header.bReceiverAddr, sizeof(BYTE), item->item.address);
-	//item->item.address = (char*)data->data.header.bReceiverAddr;
+		EnQueue(data);
+		printf("\nMESSAGE STORED IN QUEUE!\n");
+		printf("\nTHERE ARE %d MESSAGES IN QUEUE\n", countNodes(AccessQueue()));
 
-	//store sender ID
-	//Insert(item->item);
-	//printf("\nSENDER ID STORED IN PHONEBOOK!\n");
-	//BSTPrint(item);
-	
-	return SUCCESS;
+		//transfer data to ID struct
+		//strcpy((char*)data->data.header.bReceiverAddr, item->item.address);
+		//strcpy_S(data->data.header.bReceiverAddr, sizeof(BYTE), item->item.address);
+
+		for (i = 0; i < 10; i++) {
+			if (data->data.header.bSenderAddr[i] == NULL) {
+				item->item.address[i] = '\0';
+				break;
+			}
+			item->item.address[i] = data->data.header.bSenderAddr[i];
+
+		}
+
+		//store sender ID
+		Insert(item->item);
+		printf("\nStored sender ID in phonebook: %s\n", item->item.address);
+		BSTPrint(getHead());
+
+		return SUCCESS;
+	}
+
 }
 
 int frameReceiveMultipleText(void)

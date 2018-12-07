@@ -15,7 +15,6 @@ int	main(int argc, char *argv[])
 {
 	//startup initialization
 	error(startInit);
-
 	//main menu -> handles the rest of Echo except for exit
 	error(mainMenu);
 

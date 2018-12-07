@@ -35,31 +35,15 @@ int phoneBookMenu(void)
 		printf("\nPhone Book\n");
 
 		printf("\nWhat would you like to do?\n"
-			"1 - Search (NOT IMPLEMENTED)\n"
-			"2 - Add to Phone Book (NOT IMPLEMENTED)\n"
-			"3 - Remove from Phone Book (NOT IMPLEMENTED)\n"
-			"4 - Help (NOT IMPLEMENTED)\n"
-			"5 - Main Menu\n");
+			"1 - Print phonebook\n"
+			"2 - Main Menu\n");
 		choice = (PHONE_BOOK_MENU_CHOICE)getMenuChoice();
 		system("CLS");
 
 		switch (choice)
 		{
-		case PHONE_BOOK_SEARCH:
-			//error(phoneBookSearch);
-			break;
-			
-		case PHONE_BOOK_ADD:
-			//error(phoneBookAdd);
-			break;
-
-		case PHONE_BOOK_REMOVE:
-			//error(phoneBookRemove);
-			break;
-
-		case PHONE_BOOK_HELP:
-			//help();
-			break;
+		case PHONE_BOOK_PRINT:
+			BSTPrint(getHead());
 
 		case PHONE_BOOK_MAIN_MENU:
 			return SUCCESS;
@@ -141,7 +125,7 @@ tlink BSTInsert(tlink h, ID item) {
 	int rc;
 
 	if (h == NULL) {
-		//printf("BSTInsert: treenode is empty(NULL)\n\n");
+	//	printf("BSTInsert: treenode is empty(NULL)\n\n");
 		return(newTreeNode(item, NULL, NULL));     // insert pt
 	}
 
@@ -174,7 +158,7 @@ void BSTPrint(tlink h) {
 		//printf("BSTPrint: not NULL\n\n");
 
 		BSTPrint(h->pLeft);						// left
-		printf("Address: >>%s<<\n", h->item.address);	// center
+		printf("Address: %s\n", h->item.address);	// center
 		BSTPrint(h->pRight);					// right
 	}
 	return;

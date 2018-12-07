@@ -20,18 +20,14 @@
 typedef enum PHONE_BOOK_MENU_CHOICE
 {
 	PHONE_BOOK_FAIL,
-	PHONE_BOOK_SEARCH,
-	PHONE_BOOK_ADD,
-	PHONE_BOOK_REMOVE,
-	PHONE_BOOK_HELP,
+	PHONE_BOOK_PRINT,
 	PHONE_BOOK_MAIN_MENU
-
 }PHONE_BOOK_MENU_CHOICE;
 
 
 typedef struct id ID;
 struct id {
-	char *address;
+	char address[10];
 	int numMessages;
 	char* DateReceived;
 };

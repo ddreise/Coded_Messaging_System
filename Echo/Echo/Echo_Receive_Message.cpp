@@ -39,8 +39,7 @@ int receiveMenu(void)
 		printf("\nWhat would you like to do?\n"
 			"1 - Receive Audio\n"
 			"2 - Receive Text\n"
-			"3 - Help (NOT IMPLEMENTED)\n"
-			"4 - Main Menu\n");
+			"3 - Main Menu\n");
 		choice = (RECEIVE_MENU_CHOICE)getMenuChoice();
 		system("CLS");
 
@@ -52,10 +51,6 @@ int receiveMenu(void)
 
 		case RECEIVE_TEXT:
 			error(receiveText);
-			break;
-
-		case RECEIVE_MENU_HELP:
-			//help();
 			break;
 
 		case RECEIVE_MAIN_MENU:

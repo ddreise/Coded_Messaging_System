@@ -29,7 +29,6 @@ typedef enum FRAME_MENU_CHOICE
 	FRAME_RECEIVE_TEXT_MESSAGE,
 	FRAME_RECEIVE_MULTIPLE_TEXT,
 	FRAME_PRINT_QUEUE,
-	FRAME_HELP,
 	FRAME_MAIN_MENU
 
 }FRAME_MENU_CHOICE;
@@ -37,8 +36,8 @@ typedef enum FRAME_MENU_CHOICE
 //structs
 typedef struct HEADER
 {
-	BYTE bReceiverAddr;			//receiver ID. 0xFF = broadcast
-	BYTE bSenderAddr;			//sender ID
+	char bReceiverAddr[10];			//receiver ID. 0xFF = broadcast
+	char bSenderAddr[10];			//sender ID
 	BYTE bVersion;				//must be 1 for version 1
 	long lDataLength;			//size of message
 	char cSettings[2];			//settings[0]: 0 for no compression, 1 for RLE, 2 for HUFFMAN, 3 for RLE and HUFFMAN

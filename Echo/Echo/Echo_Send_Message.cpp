@@ -61,8 +61,7 @@ int sendMenu(void)
 		printf("\nWhat would you like to do?\n"
 			"1 - Send Audio\n"
 			"2 - Send Text\n"
-			"3 - Help (NOT IMPLEMENTED)\n"
-			"4 - Main Menu\n");
+			"3 - Main Menu\n");
 		choice = (SEND_MENU_CHOICE)getMenuChoice();
 		system("CLS");
 
@@ -74,10 +73,6 @@ int sendMenu(void)
 
 		case SEND_TEXT:
 			error(sendText);
-			break;
-
-		case SEND_MENU_HELP:
-			//sendHelp();
 			break;
 
 		case SEND_MAIN_MENU:
