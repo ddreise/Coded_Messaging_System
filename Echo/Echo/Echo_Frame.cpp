@@ -286,12 +286,12 @@ int frameReceiveText(void)
 
 	//transfer data to ID struct
 	//strcpy((char*)data->data.header.bReceiverAddr, item->item.address);
-	strcpy_s((char*)data->data.header.bReceiverAddr, sizeof(BYTE), item->item.address);
+	//strcpy_s((char*)data->data.header.bReceiverAddr, sizeof(BYTE), item->item.address);
 	//item->item.address = (char*)data->data.header.bReceiverAddr;
-	
+
 	//store sender ID
-	Insert(item->item);
-	printf("\nSENDER ID STORED IN PHONEBOOK!\n");
+	//Insert(item->item);
+	//printf("\nSENDER ID STORED IN PHONEBOOK!\n");
 	//BSTPrint(item);
 	
 	return SUCCESS;
